@@ -32,7 +32,13 @@ jobs:
       - name: select_db
         run: |
           mysql -h"127.0.0.1" -uroot -p'myPassword' -e "show databases"
+          echo " "
           mysql -h"127.0.0.1" -uroot -p'myPassword' -e "show tables" -D rails_development_db
+          echo " "
+          mysql -h"127.0.0.1" -uroot -p'myPassword'  -D rails_development_db -e "CREATE TABLE IF NOT EXISTS table_user_b( id INT AUTO_INCREMENT PRIMARY KEY,title VARCHAR(255) NOT NULL DEFAULT '',created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP )ENGINE=INNODB;"
+          echo " "
+          mysql -h"127.0.0.1" -uroot -p'myPassword' -e "show tables" -D rails_development_db
+          echo " "
       - name: list
         run: |
           ls -la ./
