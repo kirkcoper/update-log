@@ -9,8 +9,8 @@
 CURL="curl --silent --location --fail --retry 10"
 JSON_URL=https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json
 
-# VERSION=$1
-# ARCH=$2
+VERSION=$1
+ARCH=$2
 
 # if [[ "${ARCH}" =~ ^linux64 ]]; then
 #     CHROMEAPP=google-chrome
@@ -48,5 +48,7 @@ echo "JSON_URL  ${JSON_URL}"
 echo ""
 which "${VERSION}"
 echo ""
+echo "VERSION ${VERSION}"
 echo ""
+echo "ARCH ${ARCH}"
 echo ""
