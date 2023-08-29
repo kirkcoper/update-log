@@ -51,6 +51,8 @@ jobs:
           echo ""
           ls -la ./test_chromedriver.sh
           echo ""
+          cat ./monthly.txt
+          echo ""
       - name: exec_sh
         run: |
           chmod +x ./test_chromedriver.sh
