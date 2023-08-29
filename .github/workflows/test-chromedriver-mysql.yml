@@ -37,12 +37,12 @@ jobs:
         run: |
           ls -la ./
           echo ""
-          ls -la ./chromedriver.sh
+          ls -la ./test_chromedriver.sh
           echo ""
-          chmod +x ./chromedriver.sh
+          chmod +x ./test_chromedriver.sh
           echo ""
       - name: exec_sh
-        run: chromedriver.sh
+        run: test_chromedriver.sh
         shell: bash
 
 
