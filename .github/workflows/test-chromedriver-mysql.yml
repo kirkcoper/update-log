@@ -32,6 +32,10 @@ jobs:
       - name: select_db
         run: |
           mysql -h"127.0.0.1" -uroot -p'myPassword' -e "show databases"
+          mysql -h"127.0.0.1" -uroot -p'myPassword' -e "show tables" -D rails_development_db
+      - name: list
+        run: |
+          ls -la ./
       - name: exec_sh
         run: |
           bash ./chromedriver.sh
