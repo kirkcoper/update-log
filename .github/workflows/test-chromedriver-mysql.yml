@@ -9,6 +9,10 @@ jobs:
   laravel-tests:
 
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [ "3.11"]
 
     env:
       RAILS_ENV: test
@@ -28,7 +32,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
+      
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # python -m pip install flake8 pytest
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: select_db
         run: |
           mysql -h"127.0.0.1" -uroot -p'myPassword' -e "show databases"
@@ -63,7 +77,25 @@ jobs:
 #          ./test_chromedriver.sh  $chromedriver-version  "linux64"
 #          bash ./test_chromedriver.sh
         shell: bash
+      - name: Run Python File
+        run: |
+          python openUrl.py
+      - name: list
+        run: |
+          ls -la ./
+          echo ""
+          ls -la ./image_path
+          echo ""
+      - name: log
+        run: |
+          git log
 
-
-
+      - name: push
+        run: |
+          git config --local user.name github-actions[bot]
+          git config --local user.email github-actions[bot]@users.noreply.github.com
+          git status
+          git add ./image_path
+          git commit -m "$(date '+%Y.%m.%d %H:%M:%S') Monthly update"
+          git push origin
 
