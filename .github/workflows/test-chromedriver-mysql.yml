@@ -36,9 +36,15 @@ jobs:
       - name: list
         run: |
           ls -la ./
+          echo ""
           ls -la ./chromedriver.sh
-      - name: exec_sh
-        run: |
+          echo ""
           chmod +x ./chromedriver.sh
-          bash ./chromedriver.sh
+          echo ""
+      - name: exec_sh
+        run: chromedriver.sh
+        shell: bash
+
+
+
 
