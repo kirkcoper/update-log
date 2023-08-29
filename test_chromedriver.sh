@@ -50,7 +50,7 @@ echo "JSON_URL  ${JSON_URL}"
 echo ""
 echo "CHROME_VERSION  ${CHROME_VERSION}"
 echo ""
-echo "CHROME_VERSION " "${CHROMEAPP}" --version
+echo "CHROME_VERSION " "${CHROMEAPP}" --version  $("${CHROMEAPP}" --version )
 echo ""
 which "${CHROMEAPP}"
 echo ""
