@@ -1,0 +1,38 @@
+name: test-chromedriver-mysql
+
+on:
+  schedule:
+    - cron: "0 4 * * *"
+  workflow_dispatch:
+
+jobs:
+  laravel-tests:
+
+    runs-on: ubuntu-latest
+
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: mysql2://root:myPassword@127.0.0.1:3306/rails_development_db
+      RUBYOPT: -EUTF-8
+      SELENIUM_CHROME_HEADLESS: true
+      chromedriver-version: '88.0.4324.96'
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: rails_development_db
+          MYSQL_ROOT_PASSWORD: myPassword
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: select_db
+        run: |
+          mysql -h"127.0.0.1" -uroot -p'myPassword' -e "show databases"
+      - name: exec_sh
+        run: |
+          bash ./chromedriver.sh
+
