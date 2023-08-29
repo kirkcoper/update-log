@@ -18,7 +18,8 @@ import requests
 from selenium.webdriver.support.wait import WebDriverWait
 import os
 
-
+# https://stackoverflow.com/questions/76550506/typeerror-webdriver-init-got-an-unexpected-keyword-argument-executable-p
+from selenium.webdriver.chrome.service import Service
 
 
 # http://chromedriver.storage.googleapis.com/index.html
@@ -43,7 +44,7 @@ class openUrl():
         """启动chrome浏览器"""
         # service = Service(executable_path=r"C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe")
         # service = Service(executable_path=r"./chromedriver_109.0.5414")
-
+        service = Service(executable_path=r"/usr/local/bin/chromedriver")
         # driver = webdriver.Chrome()
         option = webdriver.ChromeOptions()
         # 无界面模式
@@ -82,7 +83,8 @@ class openUrl():
         
         # 禁用记住密码弹框
         option.add_experimental_option("prefs",{"credentials_enable_service":False,"profile.password_manager_enabled":False,"download.default_directory" : defaultDirectory})
-        driver = webdriver.Chrome(chrome_options=option,executable_path=r"/usr/local/bin/chromedriver")
+        # driver = webdriver.Chrome(chrome_options=option,executable_path=r"/usr/local/bin/chromedriver")
+        driver = webdriver.Chrome(service=service, options=option)
         # 窗口最大化
         driver.maximize_window()
         # 设置请求拦截器-只要有请求就会被拦截获取到
