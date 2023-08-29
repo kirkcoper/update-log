@@ -78,13 +78,16 @@ echo ""
 
 echo "Installing chromedriver ..."
 echo ""
+echo "-1-1-1-1-1-1-1-1-1"
 if ((CHROME_VERSION < 115)); then
     if [[ -z "${VERSION}" ]]; then
         URL="https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}"
         echo "Downloading ${URL}..."
         VERSION=$(${CURL} "${URL}")
+        echo "000000000"
         echo "VERSION=${VERSION}"
     fi
+    echo "11111111111"
     echo "Installing ChromeDriver ${VERSION} for ${ARCH}"
     URL="https://chromedriver.storage.googleapis.com/${VERSION}/chromedriver_${ARCH}.zip"
     echo "Downloading ${URL}..."
@@ -92,9 +95,18 @@ if ((CHROME_VERSION < 115)); then
     unzip -o -q chromedriver.zip
     sudo mv chromedriver /usr/local/bin/chromedriver
     rm -f chromedriver.zip
+    echo "2222222222"
+
+    echo " "
+    echo "chromedriver -version 22 " chromedriver -version "__"  /usr/local/bin/chromedriver -version
+    echo " "
+    echo "which chromedriver 22 " which chromedriver
+    echo " "
+    echo " "
+
     exit
 fi
-
+echo "333333333"
 if [[ -z "${VERSION}" ]]; then
     VERSION=$("${CHROMEAPP}" --version | cut -f 3 -d ' ')
     echo "VERSION=${VERSION}"
@@ -107,6 +119,9 @@ echo "Downloading ${JSON_URL}..."
 JSON=$(${CURL} "${JSON_URL}")
 JQ=".versions[] | select(.version == \"${VERSION}\") | .downloads.chromedriver[] | select(.platform == \"${ARCH}\") | .url"
 URL=$(jq -r "${JQ}" <<<"${JSON}")
+
+echo "44444444"
+
 if [[ -z "${URL}" ]]; then
     echo "Falling back to latest version of ChromeDriver for ${ARCH}"
     VERSION3=$(cut -d '.' -f1-3 <<<"${VERSION}")
@@ -114,20 +129,24 @@ if [[ -z "${URL}" ]]; then
     JQ2="[ .versions[] | select(.version | startswith(\"${VERSION3}.\")) ] | last | .version"
     VERSION=$(jq -r "${JQ2}" <<<"${JSON}")
     echo "VERSION=${VERSION}"
+    echo "555555555"
     JQ3=".versions[] | select(.version == \"${VERSION}\") | .downloads.chromedriver[] | select(.platform == \"${ARCH}\") | .url"
     URL=$(jq -r "${JQ3}" <<<"${JSON}")
 fi
 echo "Installing ChromeDriver ${VERSION} for ${ARCH}"
 echo "Downloading ${URL}..."
+echo "666666666"
 ${CURL} -o chromedriver.zip "${URL}"
+echo "77777777"
 unzip -o -q chromedriver.zip
+echo "8888888"
 sudo mv "chromedriver-${ARCH}/chromedriver" /usr/local/bin/chromedriver
-
+echo "9999999"
 
 echo " "
-echo "chromedriver -version 11 " chromedriver -version "__"  /usr/local/bin/chromedriver -version
+echo "chromedriver -version 55 " chromedriver -version "__"  /usr/local/bin/chromedriver -version
 echo " "
-echo "which chromedriver 11 " which chromedriver
+echo "which chromedriver 55 " which chromedriver
 echo " "
 echo " "
 
@@ -135,9 +154,9 @@ echo " "
 rm -fr chromedriver.zip chromedriver-*
 
 echo " "
-echo "chromedriver -version 22 " chromedriver -version "__"  /usr/local/bin/chromedriver -version
+echo "chromedriver -version 666 " chromedriver -version "__"  /usr/local/bin/chromedriver -version
 echo " "
-echo "which chromedriver 22 " which chromedriver
+echo "which chromedriver 666 " which chromedriver
 echo " "
 echo " "
 
