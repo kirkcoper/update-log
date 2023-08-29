@@ -53,9 +53,10 @@ jobs:
           echo ""
       - name: exec_sh
         run: |
-          sh -e  ./test_chromedriver.sh
+          chmod +x ./test_chromedriver.sh
+          ./test_chromedriver.sh
 #          bash ./test_chromedriver.sh
-#        shell: bash
+        shell: bash
 
 
 
