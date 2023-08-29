@@ -4,6 +4,8 @@
 
 # 案例
 # https://github.com/nanasess/setup-chromedriver/blob/master/lib/setup-chromedriver.sh
+# https://stackoverflow.com/questions/70341964/running-selenium-webdriver-in-github-actions-for-unit-tests
+
 
 # 如果是在GitHub action中直接运行此文件 则需要注释，如果是在GitHub action中通过js调用此文件则需去掉注释例如使用https://github.com/nanasess/setup-chromedriver/blob/master/lib/setup-chromedriver.js
 # set -eo pipefail
@@ -122,9 +124,12 @@ unzip -o -q chromedriver.zip
 sudo mv "chromedriver-${ARCH}/chromedriver" /usr/local/bin/chromedriver
 rm -fr chromedriver.zip chromedriver-*
 
-
-
-
+echo " "
+chromedriver -version
+echo " "
+which chromedriver
+echo " "
+echo " "
 
 
 
