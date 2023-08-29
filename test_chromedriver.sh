@@ -125,9 +125,9 @@ sudo mv "chromedriver-${ARCH}/chromedriver" /usr/local/bin/chromedriver
 rm -fr chromedriver.zip chromedriver-*
 
 echo " "
-chromedriver -version
+echo "chromedriver -version" chromedriver -version "__"  /usr/local/bin/chromedriver -version
 echo " "
-which chromedriver
+echo "which chromedriver" which chromedriver
 echo " "
 echo " "
 
