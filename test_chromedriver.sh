@@ -32,7 +32,12 @@ if [[ "${ARCH}" =~ ^linux64 ]]; then
     if (("${#apps[@]}")); then
         echo "Installing ${apps[*]}..."
         export DEBIAN_FRONTEND=noninteractive
+        # 更新库
         ${sudo} apt-get update
+        echo " "
+        # 安装 软件
+        echo "${sudo} apt-get install -y  ${apps[@]} "
+        echo " "
         ${sudo} apt-get install -y "${apps[@]}"
     fi
 fi
@@ -42,6 +47,7 @@ if [[ "${ARCH}" =~ ^mac64 ]]; then
 fi
 
 if [[ "${VERSION}" ]]; then
+    # 如果传版本参数了 则用制定的版本参数
     CHROME_VERSION=$(cut -d '.' -f 1 <<<"${VERSION}")
 else
     CHROME_VERSION=$("${CHROMEAPP}" --version | cut -f 3 -d ' ' | cut -d '.' -f 1)
