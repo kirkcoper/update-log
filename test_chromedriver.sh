@@ -122,12 +122,22 @@ echo "Downloading ${URL}..."
 ${CURL} -o chromedriver.zip "${URL}"
 unzip -o -q chromedriver.zip
 sudo mv "chromedriver-${ARCH}/chromedriver" /usr/local/bin/chromedriver
+
+
+echo " "
+echo "chromedriver -version 11 " chromedriver -version "__"  /usr/local/bin/chromedriver -version
+echo " "
+echo "which chromedriver 11 " which chromedriver
+echo " "
+echo " "
+
+
 rm -fr chromedriver.zip chromedriver-*
 
 echo " "
-echo "chromedriver -version" chromedriver -version "__"  /usr/local/bin/chromedriver -version
+echo "chromedriver -version 22 " chromedriver -version "__"  /usr/local/bin/chromedriver -version
 echo " "
-echo "which chromedriver" which chromedriver
+echo "which chromedriver 22 " which chromedriver
 echo " "
 echo " "
 
