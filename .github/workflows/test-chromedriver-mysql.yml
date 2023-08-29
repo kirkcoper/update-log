@@ -57,9 +57,10 @@ jobs:
         run: |
           chmod +x ./test_chromedriver.sh
           echo ""
-          cat ./test_chromedriver.sh
-          echo ""
-          ./test_chromedriver.sh  $chromedriver-version  "linux64"
+          ./test_chromedriver.sh  ${{ chromedriver-version }}  "linux64"
+#          cat ./test_chromedriver.sh
+#          echo ""
+#          ./test_chromedriver.sh  $chromedriver-version  "linux64"
 #          bash ./test_chromedriver.sh
         shell: bash
 
