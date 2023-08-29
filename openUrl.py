@@ -95,7 +95,9 @@ class openUrl():
 
     def screenShotDriver(self,fileName):
         ''' 截图 '''
-        defaultDirectory = './image_path/'
+        date = time.strftime("%Y-%m-%d", time.localtime())
+        defaultDirectory = './image_path/{}/'.format(date)
+        self.mkdir(path=defaultDirectory)
         png_path = defaultDirectory + '{}={}={}.png'.format(fileName,self.headless, '1-' +  '-截图-')
         self.driver.get_screenshot_as_file(png_path)
         # self.driver.save_screenshot(png_path)
