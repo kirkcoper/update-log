@@ -39,18 +39,21 @@ jobs:
           echo " "
           mysql -h"127.0.0.1" -uroot -p'myPassword' -e "show tables" -D rails_development_db
           echo " "
+          mysql -h"127.0.0.1" -uroot -p'myPassword' -D rails_development_db -e "insert into table_user_b(title,created_at) values(now(),now() )"
+          echo " "
+          mysql -h"127.0.0.1" -uroot -p'myPassword' -D rails_development_db -e "select * from table_user_b"
+          echo " "
       - name: list
         run: |
           ls -la ./
           echo ""
-          chmod +x ./test_chromedriver.sh
+          chmod u+x ./test_chromedriver.sh
           echo ""
           ls -la ./test_chromedriver.sh
           echo ""
       - name: exec_sh
         run: |
-          chmod +x ./test_chromedriver.sh
-          ./test_chromedriver.sh
+          sh ./test_chromedriver.sh
 #        shell: bash
 
 
