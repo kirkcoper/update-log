@@ -15,7 +15,7 @@ jobs:
       DATABASE_URL: mysql2://root:myPassword@127.0.0.1:3306/rails_development_db
       RUBYOPT: -EUTF-8
       SELENIUM_CHROME_HEADLESS: true
-      chromedriver-version: '88.0.4324.96'
+      chromedriver_version: '88.0.4324.96'
     services:
       mysql:
         image: mysql:8.0
@@ -57,7 +57,7 @@ jobs:
         run: |
           chmod +x ./test_chromedriver.sh
           echo ""
-          ./test_chromedriver.sh  ${{ chromedriver-version }}  "linux64"
+          ./test_chromedriver.sh  $chromedriver_version  "linux64"
 #          cat ./test_chromedriver.sh
 #          echo ""
 #          ./test_chromedriver.sh  $chromedriver-version  "linux64"
