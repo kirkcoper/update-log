@@ -2,6 +2,8 @@
 
 
 
+# 案例
+# https://github.com/nanasess/setup-chromedriver/blob/master/lib/setup-chromedriver.sh
 
 # 如果是在GitHub action中直接运行此文件 则需要注释，如果是在GitHub action中通过js调用此文件则需去掉注释例如使用https://github.com/nanasess/setup-chromedriver/blob/master/lib/setup-chromedriver.js
 # set -eo pipefail
@@ -46,9 +48,23 @@ else
 fi
 echo "JSON_URL  ${JSON_URL}"
 echo ""
-which "${VERSION}"
+echo "CHROME_VERSION  ${CHROME_VERSION}"
+echo ""
+echo "CHROME_VERSION " "${CHROMEAPP}" --version
+echo ""
+which "${CHROMEAPP}"
 echo ""
 echo "VERSION ${VERSION}"
 echo ""
 echo "ARCH ${ARCH}"
 echo ""
+
+
+
+
+
+
+
+
+
+
