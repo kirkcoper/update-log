@@ -16,6 +16,9 @@ ARCH=$2
 
 if [[ "${ARCH}" =~ ^linux64 ]]; then
     CHROMEAPP=google-chrome
+    echo ""
+    echo "CHROME VERSION " "${CHROMEAPP}" --version  $("${CHROMEAPP}" --version )
+    echo " "
     sudo=$(command -v sudo)
     APP="${CHROMEAPP}"
     if ! dpkg -s "${APP}" >/dev/null; then
@@ -29,6 +32,9 @@ if [[ "${ARCH}" =~ ^linux64 ]]; then
     type -a "${CHROMEAPP}" > /dev/null 2>&1 || apps+=("${APP}")
     type -a jq > /dev/null 2>&1 || apps+=(jq)
     type -a unzip > /dev/null 2>&1 || apps+=(unzip)
+    echo " "
+    echo "-y  ${apps[@]} "
+    echo " "
     if (("${#apps[@]}")); then
         echo "Installing ${apps[*]}..."
         export DEBIAN_FRONTEND=noninteractive
