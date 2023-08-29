@@ -98,12 +98,11 @@ if ((CHROME_VERSION < 115)); then
     echo "2222222222"
 
     echo " "
-    echo "chromedriver -version 22 " chromedriver -version "__"  /usr/local/bin/chromedriver -version
+    echo "chromedriver -version 22 "  $(chromedriver --version ) "__"  /usr/local/bin/chromedriver --version
     echo " "
-    echo "which chromedriver 22 " which chromedriver
+    echo "which chromedriver 22 " $(which chromedriver )
     echo " "
-    echo " "
-
+    echo " 退出shell脚本 "
     exit
 fi
 echo "333333333"
