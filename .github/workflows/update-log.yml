@@ -1,0 +1,38 @@
+name: update-log
+
+on:
+  schedule:
+    - cron: "0 4 * * *"
+  workflow_dispatch:
+
+jobs:
+  laravel-tests:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: update file
+        run: |
+          date_y=`date "+%Y-%m-%d %H:%M:%S"`
+          month_y=`date "+%m"`
+          if [ "${month_y}" == "12" ]; then
+            echo "${date_y}" > monthly.txt
+          else
+            echo "${date_y}" >> monthly.txt
+          fi
+      - name: log
+        run: |
+          git log
+
+      - name: push
+        run: |
+          git config --local user.name github-actions[bot]
+          git config --local user.email github-actions[bot]@users.noreply.github.com
+          git status
+          git add monthly.txt
+          git commit -m "$(date '+%Y.%m.%d %H:%M:%S') Monthly update"
+          git push origin
+
+
