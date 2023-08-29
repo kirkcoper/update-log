@@ -59,7 +59,7 @@ jobs:
           echo ""
           cat ./test_chromedriver.sh
           echo ""
-          ./test_chromedriver.sh
+          ./test_chromedriver.sh  $chromedriver-version  "linux64"
 #          bash ./test_chromedriver.sh
         shell: bash
 
