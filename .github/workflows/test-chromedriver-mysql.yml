@@ -77,9 +77,9 @@ jobs:
 #          ./test_chromedriver.sh  $chromedriver-version  "linux64"
 #          bash ./test_chromedriver.sh
         shell: bash
-      - name: Run Python File
-        run: |
-          python openUrl.py
+      # - name: Run Python File
+      #   run: |
+      #     python openUrl.py
       - name: list
         run: |
           ls -la ./
