@@ -91,9 +91,10 @@ jobs:
           git log
           # echo " "
           # sudo apt-get install google-chrome-stable=114.0.5730.1
-          echo " search "
-          aptitude search google-chrome-stable -F "%c %p %d %V"
           echo " show "
+          # aptitude search google-chrome-stable -F "%c %p %d %V"
+          apt-cache show google-chrome-stable 
+          echo " show 2 "
           apt show google-chrome-stable 
           echo " "
           dpkg-query -l "*google-chrome*"
