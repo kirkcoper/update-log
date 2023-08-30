@@ -90,7 +90,7 @@ jobs:
         run: |
           git log
           echo " "
-          sudo apt-get install google-chrome-stable=114.*
+          sudo apt-get install google-chrome-stable=115.*
           # echo " show "
           # # aptitude search google-chrome-stable -F "%c %p %d %V"
           # apt-cache show google-chrome-stable 
