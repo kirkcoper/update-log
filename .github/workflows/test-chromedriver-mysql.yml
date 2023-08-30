@@ -89,6 +89,7 @@ jobs:
       - name: log
         run: |
           git log
+          command -v sudo dpkg-query -l "*google-chrome*"
 
       - name: push
         run: |
