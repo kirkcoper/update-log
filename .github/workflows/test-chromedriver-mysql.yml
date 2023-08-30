@@ -90,7 +90,7 @@ jobs:
         run: |
           git log
           echo " "
-          command -v sudo apt-get install google-chrome-stable=114.0.5730.1
+          apt-get install google-chrome-stable=114.0.5730.1
           echo " "
           dpkg-query -l "*google-chrome*"
           echo " "
