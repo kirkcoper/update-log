@@ -92,7 +92,7 @@ jobs:
           echo " "
           dpkg-query -l "*google-chrome*"
           echo " "
-          apt-get list --all-versions google-chrome-stable
+          apt list --all-versions google-chrome-stable
       # - name: log
       #   run: |
       #     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
