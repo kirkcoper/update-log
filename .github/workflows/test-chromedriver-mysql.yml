@@ -84,8 +84,8 @@ jobs:
         run: |
           ls -la ./
           echo ""
-          ls -la ./image_path
-          echo ""
+          # ls -la ./image_path
+          # echo ""
       - name: log
         run: |
           git log
